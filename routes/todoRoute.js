@@ -2,8 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/todos", (req, res) => {});
-router.post("/todos", (req, res) => {});
-router.get("/todo/:id", (req, res) => {});
-router.put("/todos", (req, res) => {});
-router.delete("/todos", (req, res) => {});
+router.get("/", (req, res) => {
+  res.json({ message: "All todos" });
+});
+router.post("/", (req, res) => {});
+router.get("/:id", (req, res) => {});
+router.put("/", (req, res) => {});
+router.delete("/", (req, res) => {});
+
+module.exports = router;
