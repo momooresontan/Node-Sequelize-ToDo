@@ -1,6 +1,6 @@
 const express = require("express");
 const todoRouter = require("./routes/todoRoute");
-const {} = require("./db");
+const { sequelize, connectToDB } = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello World" });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Server running on port: ${PORT}`);
+  await connectToDB;
 });
