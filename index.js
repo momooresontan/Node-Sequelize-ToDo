@@ -1,5 +1,6 @@
 const express = require("express");
 const todoRouter = require("./routes/todoRoute");
+const {} = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3000;

@@ -1,6 +1,15 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("expresstasks", "root", "", {
+exports.sequelize.sequelize = new Sequelize("expresstasks", "root", "", {
   dialect: "mysql",
   host: "localhost",
 });
+
+exports.connectToDB = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("DB successfully connected");
+  } catch (err) {
+    console.log(err);
+  }
+};
