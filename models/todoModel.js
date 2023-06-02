@@ -1,7 +1,7 @@
 const { sequelize } = require("../db");
 const { DataTypes } = require("sequelize");
 
-sequelize.define("Task", {
+const Task = sequelize.define("Task", {
   content: {
     type: DataTypes.STRING,
     validate: {
@@ -11,9 +11,12 @@ sequelize.define("Task", {
   description: {
     type: DataTypes.TEXT,
   },
-  is_complete: {
+  isComplete: {
     type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 });
 
-sequelize.sync();
+//sequelize.sync(); //Helps when creating database table
+
+module.exports = Task;
