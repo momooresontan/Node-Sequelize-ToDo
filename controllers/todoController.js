@@ -11,6 +11,11 @@ exports.createTask = async (req, res) => {
     description: req.body.description,
     isComplete: req.body.isComplete,
   };
-  const newTask = await Task.create(info);
-  res.status(201).json(newTask);
+  const newTask = Task.build(info);
+  try {
+    await newTask.save();
+    res.status(201).json(newTask);
+  } catch (err) {
+    res.json(err);
+  }
 };
