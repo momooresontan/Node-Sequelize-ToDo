@@ -6,5 +6,11 @@ exports.getAll = async (req, res) => {
 };
 
 exports.createTask = async (req, res) => {
-  const task = await Task.create(req.body());
+  let info = {
+    content: req.body.content,
+    description: req.body.description,
+    isComplete: req.body.isComplete,
+  };
+  const newTask = await Task.create(info);
+  res.status(201).json(newTask);
 };
