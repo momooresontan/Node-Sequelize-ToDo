@@ -1,10 +1,8 @@
 const express = require("express");
-
+const todoController = require("../controllers/todoController");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "All todos" });
-});
+router.get("/", todoController.getAll);
 router.post("/", (req, res) => {});
 router.get("/:id", (req, res) => {});
 router.put("/", (req, res) => {});
