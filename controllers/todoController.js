@@ -19,3 +19,11 @@ exports.createTask = async (req, res) => {
     res.json(err);
   }
 };
+
+exports.getOneTask = async (req, res) => {
+  let id = req.params.id;
+  const task = await Task.findOne({
+    where: { id },
+  });
+  res.status(200).json(task);
+};
