@@ -1,4 +1,5 @@
 const express = require("express");
+//const bodyPasrser = require("body-parser");
 const todoRouter = require("./routes/todoRoute");
 const { sequelize, connectToDB } = require("./db");
 
@@ -6,8 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Middlewares
+//app.use(bodyPasrser);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//app.use(express.urlencoded({ extended: true }));
 
 //Mount the router
 app.use("/api/v1/todo", todoRouter);
