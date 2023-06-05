@@ -30,10 +30,15 @@ exports.getOneTask = async (req, res) => {
 
 exports.updateOneTask = async (req, res) => {
   let id = req.params.id;
-  const updatedTask = await Task.update(req.body, {
+  const task = await Task.findOne({
     where: { id },
   });
-  res.status(200).json(updatedTask);
+
+  const { content, description, isComplete } = req.body;
+  await task.set({ content, description, isComplete });
+  await task.save();
+
+  res.status(200).json(task);
 };
 
 exports.updateOneField = async (req, res) => {
