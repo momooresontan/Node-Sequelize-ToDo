@@ -14,6 +14,16 @@ app.use(express.json());
 //Mount the router
 app.use("/api/v1/todo", todoRouter);
 
+app.use((req, res) => {
+  res.status(404);
+  res.json({ message: "Resource not found" });
+});
+
+app.use((req, res) => {
+  res.status(500);
+  res.json({ message: "Oops... Something went wrong" });
+});
+
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello World" });
 });
