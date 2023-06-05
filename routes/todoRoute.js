@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/", todoController.getAll);
 router.post("/", todoController.createTask);
 router.get("/:id", todoController.getOneTask);
-router.patch("/", (req, res) => {});
+router.patch("/:id", todoController.updateOneField);
 router.put("/", (req, res) => {});
 router.delete("/", (req, res) => {});
 

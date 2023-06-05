@@ -45,7 +45,9 @@ exports.updateOneField = async (req, res) => {
   });
   const { isComplete } = req.body;
 
-  await task.isComplete = true
+  await task.set({ isComplete });
 
-  await task.save()
+  await task.save();
+
+  res.status(200).json(task);
 };
