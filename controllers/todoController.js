@@ -54,3 +54,12 @@ exports.updateOneField = async (req, res) => {
 
   res.status(200).json(task);
 };
+
+exports.deleteTask = async (req, res) => {
+  const id = req.params.id;
+  const task = await Task.findOne({
+    where: { id },
+  });
+  await task.destroy();
+  res.status(204).json("Task has been deleted");
+};

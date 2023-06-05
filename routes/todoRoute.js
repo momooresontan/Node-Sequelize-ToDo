@@ -7,6 +7,6 @@ router.post("/", todoController.createTask);
 router.get("/:id", todoController.getOneTask);
 router.patch("/:id", todoController.updateOneField);
 router.put("/:id", todoController.updateOneTask);
-router.delete("/");
+router.delete("/:id", todoController.deleteTask);
 
 module.exports = router;
