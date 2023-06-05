@@ -27,3 +27,25 @@ exports.getOneTask = async (req, res) => {
   });
   res.status(200).json(task);
 };
+
+exports.updateOneTask = async (req, res) => {
+  let id = req.params.id;
+  const updatedTask = await Task.update(req.body, {
+    where: { id },
+  });
+  res.status(200).json(updatedTask);
+};
+
+exports.updateOneField = async (req, res) => {
+  const id = req.params.id;
+  const task = await Task.findOne({
+    where: {
+      id,
+    },
+  });
+  const { isComplete } = req.body;
+
+  await task.isComplete = true
+
+  await task.save()
+};

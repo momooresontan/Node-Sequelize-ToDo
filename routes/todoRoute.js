@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get("/", todoController.getAll);
 router.post("/", todoController.createTask);
-router.get("/:id", (req, res) => {});
+router.get("/:id", todoController.getOneTask);
+router.patch("/", (req, res) => {});
 router.put("/", (req, res) => {});
 router.delete("/", (req, res) => {});
 
